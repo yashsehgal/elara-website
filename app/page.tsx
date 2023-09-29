@@ -8,10 +8,13 @@ const HomeView: React.FunctionComponent = () => {
   return (
     <div className="home-view">
       <LandingHeroSection />
-      <AboutCTASection />
-      <QualitiesSection />
-      <FAQSection />
+      <div id="about">
+        <AboutCTASection />
+      </div>
       <ProductSection />
+      <FAQSection />
+      <QualitiesSection />
+      <AboutCTASection />
     </div>
   )
 };
