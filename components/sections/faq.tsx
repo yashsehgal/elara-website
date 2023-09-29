@@ -38,7 +38,7 @@ const FAQData: Array<{
 
 const FAQSection: React.FunctionComponent = () => {
   return (
-    <section className="faq-section">
+    <section className="faq-section" id="faq">
       <ViewContainer className="my-36">
         <div className="faq-cta-content-container rounded-2xl overflow-hidden bg-gradient-to-b from-neutral-700 to-neutral-900 flex flex-row items-stretch justify-between border relative">
           <div className="faq-content-section px-10 pt-10 pb-16">

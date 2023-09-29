@@ -1,5 +1,6 @@
 import ViewContainer from "@components/layouts/view-container";
 import { Button } from "@components/ui/button";
+import Link from "next/link";
 
 const LandingHeroSection: React.FunctionComponent = () => {
   return (
@@ -12,9 +13,11 @@ const LandingHeroSection: React.FunctionComponent = () => {
           {"Elevate your home's security and aesthetic appeal with our premium locks and home fittings, elegance in every detail."}
         </p>
         <div className="landingPage-cta-wrapper flex flex-row items-center justify-center mx-auto w-fit gap-4">
-          <Button variant={"ghost"}>
-            {"Read FAQs"}
-          </Button>
+          <Link href="/#faq">
+            <Button variant={"ghost"}>
+              {"Read FAQs"}
+            </Button>
+          </Link>
           <Button>
             {"Explore Products"}
           </Button>
