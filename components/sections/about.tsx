@@ -3,6 +3,7 @@ import { Button } from "@components/ui/button";
 import { cn } from "@utils/cn";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const AboutCTASection: React.FunctionComponent = () => {
   return (
@@ -24,12 +25,14 @@ const AboutCTASection: React.FunctionComponent = () => {
                 Our commitment to excellence shines through our wide range of high-quality products.
               </p>
             </div>
-            <Button
-              className={cn("mt-12 text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all")}
-            >
-              Explore Products
-              <ArrowRight className="w-4 h-auto" />
-            </Button>
+            <Link href="/products">
+              <Button
+                className={cn("mt-12 text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all")}
+              >
+                Explore Products
+                <ArrowRight className="w-4 h-auto" />
+              </Button>
+            </Link>
           </div>
           <div className="action-image-container flex flex-row items-center justify-center overflow-hidden">
             <Image

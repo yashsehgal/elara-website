@@ -18,9 +18,11 @@ const LandingHeroSection: React.FunctionComponent = () => {
               {"Read FAQs"}
             </Button>
           </Link>
-          <Button>
-            {"Explore Products"}
-          </Button>
+          <Link href="/products">
+            <Button>
+              {"Explore Products"}
+            </Button>
+          </Link>
         </div>
         <div className="absolute -top-20 left-1/2 -z-10 h-[200px] w-[200px] animate-pulse rounded-full bg-orange-200 blur-3xl transition-all" />
         <div className="absolute -top-20 left-1/3 -z-10 h-[200px] w-[200px] animate-pulse rounded-full bg-pink-300 blur-3xl transition-all" />

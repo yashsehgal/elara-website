@@ -4,6 +4,7 @@ import ViewContainer from "@components/layouts/view-container";
 import { Button } from "@components/ui/button";
 import { cn } from "@utils/cn";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 const ProductSection: React.FunctionComponent = () => {
@@ -29,12 +30,14 @@ const ProductSection: React.FunctionComponent = () => {
               {categoryItem}
             </Button>
           })}
-          <Button
-            className={cn("text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all")}
-          >
-            See all products
-            <ArrowRight className="w-4 h-auto" />
-          </Button>
+          <Link href="/products">
+            <Button
+              className={cn("text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all")}
+            >
+              See all products
+              <ArrowRight className="w-4 h-auto" />
+            </Button>
+          </Link>
         </div>
         <div className="product-recommendations-list grid grid-cols-4 w-fit mx-auto items-center center gap-x-20 my-24">
           {Array(4).fill("").map((_, index) => {
@@ -46,14 +49,16 @@ const ProductSection: React.FunctionComponent = () => {
           })}
         </div>
         <div className="my-12 flex flex-row items-center justify-center">
-          <Button
-            className={cn("flex flex-row gap-1 hover:gap-1.5 transition-all")}
-            variant={"outline"}
-            size={'lg'}
-          >
-            See all products
-            <ArrowRight className="w-4 h-auto" />
-          </Button>
+          <Link href="/products">
+            <Button
+              className={cn("flex flex-row gap-1 hover:gap-1.5 transition-all")}
+              variant={"outline"}
+              size={'lg'}
+            >
+              See all products
+              <ArrowRight className="w-4 h-auto" />
+            </Button>
+          </Link>
         </div>
       </ViewContainer>
     </section>
