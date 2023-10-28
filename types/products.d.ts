@@ -5,3 +5,12 @@ declare type ProductCategoryType = 'Door Locks'
   | 'Door Handles'
   | 'Aldrops'
   | 'Bathroom Accessories';
+
+declare interface ProductCardInterface {
+  "imagePathname": string;
+  "title": string;
+  "description": string | React.ReactNode;
+  "price": number;
+  "slug": string;
+  "category": string;
+}
