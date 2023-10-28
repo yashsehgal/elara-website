@@ -13,8 +13,10 @@ const ProductCard: React.FunctionComponent<ProductCardInterface> = ({
   return (
     <div className="product-recommendation-card w-[260px] h-auto p-4 rounded-lg border border-neutral-100 shadow-sm">
       <div
-        className="product-display-image-wrapper overflow-hidden w-full h-[180px] border border-white bg-white rounded-lg zoom-in-110"
+        className="product-display-image-wrapper relative overflow-hidden w-full h-[180px] border border-white bg-white rounded-lg"
       >
+        {/* image cleanup -- intentionally added */}
+        <div className="absolute border-4 border-white bg-transparent top-0 left-0 w-[220px] h-full" />
         <Image
           src={imagePathname}
           width={"220"}
@@ -30,7 +32,7 @@ const ProductCard: React.FunctionComponent<ProductCardInterface> = ({
             {title}
           </h3>
           <h3 className="product-price tracking-tight font-medium text-base">
-            {"Rs. " + price.toString()}
+            {"Rs. " + price}
           </h3>
         </div>
         <div className="grid grid-cols-1 gap-2 mt-4">

@@ -2,10 +2,11 @@
 import ViewContainer from "@components/layouts/view-container";
 import { Button } from "@components/ui/button";
 import { cn } from "@utils/cn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "../../common/product";
 import { ProductCard } from "@components/ui/product-card";
-import { fetchAllProducts } from "../../helpers/productCategoryManager";
+import { fetchAllProducts } from "../../helpers/ProductCategoryManager";
+import { Input } from "@components/ui/input";
 
 const ProductsView: React.FunctionComponent = () => {
   // To handle the toggle state for category filtering.
@@ -16,6 +17,27 @@ const ProductsView: React.FunctionComponent = () => {
   // List of all the products
   const [allProducts, setAllProducts]
     = useState<Array<ProductCardInterface>>(fetchAllProducts());
+  // to store search filter input
+  const [searchInput, setSearchInput] = useState<string>("");
+
+  // to handle filtering of products
+  const handleFilter = (value: string) => {
+    if (!value) setAllProducts(fetchAllProducts());
+    else {
+      setAllProducts(fetchAllProducts());
+      // filtering products according to searchInput
+      let _newProductList: Array<ProductCardInterface> = [] as any;
+      _newProductList = allProducts.filter((product, _) => {
+        return (product.title.toLowerCase().includes(searchInput.toLowerCase()))
+      });
+      setAllProducts(_newProductList);
+    }
+  }
+
+  useEffect(() => {
+    if (!allProducts) setAllProducts(fetchAllProducts());
+  }, [searchInput, allProducts]);
+
   return (
     <div className="products-view">
       <ViewContainer className="my-16">
@@ -29,6 +51,17 @@ const ProductsView: React.FunctionComponent = () => {
                 {categoryItem}
               </Button>
             })}
+          </div>
+          <div className="search-filter-container">
+            <Input
+              type="text"
+              placeholder="Search by name, category or model number"
+              onChange={(e) => {
+                setSearchInput(e.target.value as string);
+                handleFilter(e.target.value as string);
+              }}
+              value={searchInput}
+            />
           </div>
           <div className="product-items-container grid grid-cols-4 w-fit mx-auto items-center center gap-x-20 gap-y-16 my-24">
             {allProducts.map((product, index) => {
