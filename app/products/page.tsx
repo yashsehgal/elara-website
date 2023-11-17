@@ -5,7 +5,7 @@ import { cn } from "@utils/cn";
 import { useEffect, useState } from "react";
 import { categories } from "../../common/product";
 import { ProductCard } from "@components/ui/product-card";
-import { fetchAllProducts } from "@helpers/ProductCategoryManager";
+import { fetchAllProducts } from "@helpers/product-category-manager";
 import { Input } from "@components/ui/input";
 
 const ProductsView: React.FunctionComponent = () => {

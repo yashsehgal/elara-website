@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { categories } from "../../common/product";
 import { ProductCard } from "@components/ui/product-card";
-import { fetchAllProducts } from "@helpers/ProductCategoryManager";
+import { fetchAllProducts } from "@helpers/product-category-manager";
 
 const ProductSection: React.FunctionComponent = () => {
   // To handle the toggle state for category filtering.
