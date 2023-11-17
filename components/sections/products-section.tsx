@@ -5,15 +5,24 @@ import { Button } from "@components/ui/button";
 import { cn } from "@utils/cn";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { categories } from "../../common/product";
 import { ProductCard } from "@components/ui/product-card";
+import { fetchAllProducts } from "../../helpers/ProductCategoryManager";
 
 const ProductSection: React.FunctionComponent = () => {
   // To handle the toggle state for category filtering.
   const [category, setCategory] = useState<ProductCategoryType | "All">("All");
   // List of options to toggle from.
   const allCategories: Array<ProductCategoryType & "All"> = ["All", ...categories] as string[] | any;
+  // List of all the products
+  const [allProducts, setAllProducts]
+    = useState<Array<ProductCardInterface>>(fetchAllProducts());
+
+  useEffect(() => {
+    if (!allProducts) setAllProducts(fetchAllProducts());
+  }, [allProducts]);
+
 
   return (
     <section className="products-section">
@@ -39,12 +48,21 @@ const ProductSection: React.FunctionComponent = () => {
           </Link>
         </div>
         <div className="product-recommendations-list grid grid-cols-4 w-fit mx-auto items-center center gap-x-20 my-24">
-          {Array(4).fill("").map((_, index) => {
-            return (
-              <ProductCard
-                key={index}
-              />
-            )
+          {allProducts.map((product, index) => {
+            // custom limiter to 4 cards initially
+            if (index < 4) {
+              return (
+                <ProductCard
+                  title={product.title}
+                  description={product.description}
+                  price={product.price}
+                  slug={product.slug}
+                  imagePathname={product.imagePathname}
+                  category={product.category}
+                  key={index}
+                />
+              )
+            }
           })}
         </div>
         <div className="my-12 flex flex-row items-center justify-center">
