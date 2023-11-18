@@ -12,11 +12,10 @@ const HomeView: React.FunctionComponent = () => {
         <AboutCTASection />
       </div>
       <ProductSection />
-      <FAQSection />
       <QualitiesSection />
-      <AboutCTASection />
+      <FAQSection />
     </div>
-  )
+  );
 };
 
 export default HomeView;
