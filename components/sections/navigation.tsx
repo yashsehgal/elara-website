@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const NavigationData = {
   logo: {
-    imgURL: "", // Add your logo image URL here
+    imgURL: "/media/elara-dark.svg", // Add your logo image URL here
     title: "Elara Home Fittings Logo",
   },
   options: [
@@ -30,8 +30,8 @@ const NavigationSection = () => {
               <Image
                 src={NavigationData.logo.imgURL}
                 alt={NavigationData.logo.title || "Elara"}
-                width={"200"}
-                height={"200"}
+                width={"160"}
+                height={"200"} // auto
               />
             ) : (
               <div className="navbar-logo-htmlContent flex flex-col items-start">
@@ -57,9 +57,8 @@ const NavigationSection = () => {
         </div>
 
         <div
-          className={`${
-            menuOpen ? "block" : "hidden"
-          } md:block md:flex-row md:items-center md:justify-end md:gap-4 md:w-fit`}
+          className={`${menuOpen ? "block" : "hidden"
+            } md:block md:flex-row md:items-center md:justify-end md:gap-4 md:w-fit`}
         >
           <ul className="md:flex md:flex-row md:items-center md:justify-end md:gap-4">
             {NavigationData.options.map((option, optionIndex) => (

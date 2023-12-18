@@ -59,7 +59,7 @@ const ProductsView: React.FunctionComponent = () => {
                     className={cn(
                       "border-2 truncate",
                       category === categoryItem &&
-                        "border-red-300 bg-red-50 hover:bg-red-100"
+                      "border-red-300 bg-red-50 hover:bg-red-100"
                     )}
                     key={categoryIndex}
                     onClick={() => setCategory(categoryItem)}
@@ -89,7 +89,6 @@ const ProductsView: React.FunctionComponent = () => {
                 <ProductCard
                   title={product.title}
                   description={product.description}
-                  price={product.price}
                   slug={product.slug}
                   imagePathname={product.imagePathname}
                   category={product.category}

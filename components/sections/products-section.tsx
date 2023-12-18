@@ -3,12 +3,32 @@
 import ViewContainer from "@components/layouts/view-container";
 import { Button } from "@components/ui/button";
 import { cn } from "@utils/cn";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronUp, MoveUpRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { categories } from "../../common/product";
 import { ProductCard } from "@components/ui/product-card";
 import { fetchAllProducts } from "@helpers/product-category-manager";
+import { motion } from "framer-motion";
+
+const Categories: Array<{ title: string; slug: string }> = [
+  {
+    title: "Door Locks",
+    slug: "door-locks",
+  },
+  {
+    title: "Rose Handles",
+    slug: "rose-handles"
+  },
+  {
+    title: "Mortise Handles",
+    slug: "mortise-handles"
+  },
+  {
+    title: "Door Kit",
+    slug: "door-kit"
+  }
+]
 
 const ProductSection: React.FunctionComponent = () => {
   const [category, setCategory] = useState<ProductCategoryType | "All">("All");
@@ -40,54 +60,35 @@ const ProductSection: React.FunctionComponent = () => {
             everything in between to make your home more secure and beautiful.
           </p>
         </div>
-        {/* <div className="product-recommendations-options grid grid-cols-4 items-center justify-center gap-6 w-fit mx-auto my-12">
-          {allCategories.map(
-            (
-              categoryItem: ProductCategoryType & "All",
-              categoryIndex: number
-            ) => {
-              return (
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "border-2",
-                    category === categoryItem &&
-                      "border-red-300 bg-red-50 hover:bg-red-100"
-                  )}
-                  key={categoryIndex}
-                  onClick={() => setCategory(categoryItem)}
-                >
-                  {categoryItem}
-                </Button>
-              );
-            }
-          )}
-          <Link href="/products">
-            <Button
-              className={cn(
-                "text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all"
-              )}
-            >
-              See all products
-              <ArrowRight className="w-4 h-auto" />
-            </Button>
-          </Link>
-        </div> */}
-        <div className="product-recommendations-list grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center center gap-10 my-24">
-          {allProducts.map((product, index) => {
-            if (index < 6) {
-              return (
-                <ProductCard
-                  title={product.title}
-                  description={product.description}
-                  price={product.price}
-                  slug={product.slug}
-                  imagePathname={product.imagePathname}
-                  category={product.category}
-                  key={index}
+        <div className="product-categories-list flex flex-row items-center justify-center gap-12 my-24 max-xl:grid max-xl:grid-cols-2 max-xl:mx-auto max-xl:w-fit max-lg:grid-cols-1">
+          {Categories.map((category, index) => {
+            return (
+              <motion.div
+                className="relative w-52 h-52 rounded-xl bg-gradient-to-tr from-black to-neutral-700 flex flex-col items-start justify-end p-6 cursor-pointer hover:shadow-2xl max-lg:w-[280px]"
+                key={index}
+                initial={{
+                  top: 12 * (index),
+                  opacity: 0
+                }}
+                animate={{
+                  top: 0,
+                  opacity: 1
+                }}
+                transition={{
+                  type: "spring",
+                }}
+                whileHover={{
+                  scale: 0.95
+                }}
+              >
+                <p className="font-semibold text-2xl text-white w-[4ch]">
+                  {category.title}
+                </p>
+                <ChevronUp
+                  className="absolute top-6 right-6 text-white rotate-90"
                 />
-              );
-            }
+              </motion.div>
+            )
           })}
         </div>{" "}
         <div className=" flex flex-col md:flex-row items-center justify-center mx-auto w-full md:w-fit gap-4">

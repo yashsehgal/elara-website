@@ -74,10 +74,10 @@ const FooterSection: React.FunctionComponent = () => {
                   </span>
 
                   <a
-                    href="#"
+                    href="tel:+91-8868861935"
                     className="block text-2xl font-medium text-neutral-900 hover:opacity-75 sm:text-3xl"
                   >
-                    0123456789
+                    (+91) 8868861935
                   </a>
                 </p>
                 <ul className="mt-8 space-y-1 text-sm text-neutral-700">

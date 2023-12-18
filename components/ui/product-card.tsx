@@ -7,9 +7,7 @@ const ProductCard: React.FunctionComponent<ProductCardInterface> = ({
   title,
   description,
   category,
-  slug,
   imagePathname,
-  price,
   status,
 }) => {
   return (
@@ -31,21 +29,6 @@ const ProductCard: React.FunctionComponent<ProductCardInterface> = ({
           <h3 className="product-title tracking-tight font-medium text-lg">
             {title}
           </h3>
-        </div>
-        <div className="flex justify-between items-center">
-          <h3 className="product-price text-base text-neutral-500 my-3">
-            {"Rs. " + price}
-          </h3>
-        </div>
-        <div className="grid grid-cols-1 gap-2 mt-4">
-          <Button
-            className={cn(
-              "text-neutral-100 bg-neutral-800 hover:bg-neutral-700 flex flex-row gap-1 hover:gap-1.5 transition-all"
-            )}
-            size={"sm"}
-          >
-            Order now
-          </Button>
         </div>
       </div>
     </div>
